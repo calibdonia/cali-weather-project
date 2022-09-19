@@ -1,0 +1,91 @@
+.widget {
+  border: 1px solid #000;
+  border-radius: 10px;
+  background-image: url(../images/cybernight.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  padding: 140px 50px;
+  width: 700px;
+  display: block;
+  margin: 0 auto;
+}
+
+.today-temp {
+  font-family: "Bungee Shade", cursive;
+  font-size: 50px;
+  color: #fff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff,
+    0 0 42px rgb(255, 0, 204), 0 0 82px rgb(255, 0, 204),
+    0 0 92px rgb(255, 0, 204), 0 0 102px rgb(255, 0, 204),
+    0 0 151px rgb(255, 0, 204);
+  text-align: right;
+}
+
+.location {
+  font-family: "Bungee Shade", cursive;
+  font-size: 35px;
+  color: #fff;
+  text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #14c5f0,
+    0 0 82px #14c5f0, 0 0 92px #14c5f0, 0 0 102px #14c5f0, 0 0 151px #14c5f0;
+  display: inline-block;
+}
+
+.fivedays {
+  padding: 75px 0px;
+}
+
+.row {
+  color: #eab6e4;
+  text-align: center;
+  font-family: "Comfortaa", cursive;
+  gap: 5%;
+}
+
+.col {
+  width: 15px;
+  border-radius: 10px;
+  background: #ffffff4b;
+  padding: 20px 2px;
+}
+
+.date-time {
+  font-family: "Orbitron", sans-serif;
+  text-align: right;
+  display: inline;
+  position: relative;
+  top: -50px;
+}
+
+h5,
+p {
+  color: #a6c9f6e5;
+  font-size: 12px;
+}
+
+.searchbar,
+.search {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 5px;
+}
+
+.searchbar {
+  font-family: "Comfortaa", cursive;
+  font-size: 18px;
+}
+
+input {
+  background-color: #ffffff8e;
+  border: 1px solid #07337f;
+  border-radius: 10px;
+  width: 520px;
+}
+
+button {
+  border-radius: 10px;
+}
+
+i {
+  padding: 1px 0px;
+  font-size: 15px;
+}
