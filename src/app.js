@@ -78,3 +78,19 @@ let celsiusLink = document.querySelector("#celsius");
 celsiusLink.addEventListener("click", convertToCelsius);
 
 // any reason why I get NAN when clicking F despite using the same code as the solution?
+
+function showCity(event) {
+  event.preventDefault();
+  let cityInput = document.querySelector("#search-city");
+  let newCity = document.querySelector("#city-name");
+
+  newCity.innerHTML = `${cityInput.value}`;
+
+  let apiKey = "b9e4a8acfd074502d8896fee3c101e74";
+  let newSearch = document.querySelector("#search-city").value;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${newSearch}&appid=${apiKey}&units=metric`;
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
+}
+
+let cityForm = document.querySelector("form");
+cityForm.addEventListener("submit", showCity);
