@@ -42,14 +42,14 @@ function formatTime(time) {
 let newTime = document.querySelector("#clock");
 newTime.innerHTML = `${formatTime(currentTime)}`;
 
+let celsiusTemp = null;
+
 function showTemperature(response) {
   document.querySelector("#city-name").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = `${Math.round(
     response.data.main.temp
   )}° C`;
 }
-
-// Displays searched city and the correct temp (celsius/metric) w/API/AJAX
 
 function showCity(event) {
   event.preventDefault();
@@ -66,3 +66,17 @@ function showCity(event) {
 
 let cityForm = document.querySelector("form");
 cityForm.addEventListener("submit", showCity);
+
+/// fahrenheit
+
+function displayFahrenheitTemperature(event) {
+  event.preventDefault();
+  let fahrenheitTemp = Math.round(14 * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#temperature");
+  temperatureElement.innerHTML = `${fahrenheitTemp}°F | °C`;
+}
+
+let fahrenheitLink = document.querySelector("#height");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
+
+// the number is being funky for fahrenheit since my code for
