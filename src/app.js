@@ -66,17 +66,3 @@ function showCity(event) {
 
 let cityForm = document.querySelector("form");
 cityForm.addEventListener("submit", showCity);
-
-/// fahrenheit
-
-function displayFahrenheitTemperature(event) {
-  event.preventDefault();
-  let fahrenheitTemp = Math.round(14 * 9) / 5 + 32;
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = `${fahrenheitTemp}°F | °C`;
-}
-
-let fahrenheitLink = document.querySelector("#height");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
-
-// the number is being funky for fahrenheit since my code for
