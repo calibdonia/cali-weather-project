@@ -42,27 +42,15 @@ function formatTime(time) {
 let newTime = document.querySelector("#clock");
 newTime.innerHTML = `${formatTime(currentTime)}`;
 
-let celsiusTemp = null;
-
-function showTemperature(response) {
-  document.querySelector("#city-name").innerHTML = response.data.name;
-  document.querySelector("#temperature").innerHTML = `${Math.round(
-    response.data.main.temp
-  )}° C`;
+function displayTemperature(response) {
+  let temperatureElement = document.querySelector("#temperature");
+  let cityElement = document.querySelector("#city-name");
+  temperatureElement.innerHTML = `${Math.round(response.data.main.temp)}° C`;
+  cityElement.innerHTML = response.data.name;
 }
 
-function showCity(event) {
-  event.preventDefault();
-  let cityInput = document.querySelector("#search-city");
-  let newCity = document.querySelector("#city-name");
+let apiKey = "b9e4a8acfd074502d8896fee3c101e74";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=New York&appid=${apiKey}&units=metric`;
 
-  newCity.innerHTML = `${cityInput.value}`;
-
-  let apiKey = "b9e4a8acfd074502d8896fee3c101e74";
-  let newSearch = document.querySelector("#search-city").value;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${newSearch}&appid=${apiKey}&units=metric`;
-  axios.get(`${apiUrl}&appid=${apiKey}`).then(showTemperature);
-}
-
-let cityForm = document.querySelector("form");
-cityForm.addEventListener("submit", showCity);
+console.log(apiUrl);
+axios.get(apiUrl).then(displayTemperature);
