@@ -90,6 +90,8 @@ function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city-name");
   let iconElement = document.querySelector("#icon");
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = response.data.weather[0].description;
   temperatureElement.innerHTML = `${Math.round(response.data.main.temp)}° C`;
   cityElement.innerHTML = response.data.name;
   iconElement.setAttribute(
