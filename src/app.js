@@ -42,12 +42,49 @@ function formatTime(time) {
 let newTime = document.querySelector("#clock");
 newTime.innerHTML = `${formatTime(currentTime)}`;
 
+function displayForecast(response) {
+  console.log(response.data.daily);
+  let forecastElement = document.querySelector("#forecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+            <div class="col" id="weekday">
+              SUN<br /><i class="fa-solid fa-cloud-sun" id="daily-icon"></i
+              ><br /><span id="daily-temp">20°C</span>
+            </div>
+            <div class="col" id="weekday">
+              MON<br /><i class="fa-solid fa-cloud-rain" id="daily-icon"></i
+              ><br /><span id="daily-temp">24°C</span>
+            </div>
+            <div class="col" id="weekday">
+              TUES<br /><i class="fa-solid fa-sun" id="daily-icon"></i
+              ><br /><span id="daily-temp">19°C</span>
+            </div>
+            <div class="col" id="weekday">
+              WED<br /><i class="fa-solid fa-cloud-sun" id="daily-icon"></i
+              ><br /><span id="daily-temp">22°C</span>
+            </div>
+            <div class="col" id="weekday">
+              THURS<br /><i class="fa-solid fa-sun" id="daily-icon"></i
+              ><br /><span id="daily-temp">23°C</span>
+            </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function getForecast(coordinates) {
   let apiKey = "c8735bb7e8e2f8d8a38c7501f3cd47d3";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  let forecastElement = document.querySelector("#forecast");
   console.log(apiUrl);
-  axios.get(apiUrl).then(forecastElement);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function displayTemperature(response) {
