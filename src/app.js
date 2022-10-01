@@ -89,16 +89,10 @@ function getForecast(coordinates) {
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city-name");
-  let iconElement = document.querySelector("#icon");
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.weather[0].description;
   temperatureElement.innerHTML = `${Math.round(response.data.main.temp)}° C`;
   cityElement.innerHTML = response.data.name;
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  iconElement.setAttribute("alt", response.data.weather[0].description);
   getForecast(response.data.coord);
 }
 
