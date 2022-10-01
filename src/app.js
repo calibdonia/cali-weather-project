@@ -61,12 +61,15 @@ function displayForecast(response) {
         forecastHTML +
         `
             <div class="col" id="weekday">
-              ${formatDay(
-                forecastDay.dt
-              )}<br /><i class="fa-solid fa-cloud-sun" id="daily-icon"></i
-              ><br /><span id="daily-temp">${Math.round(
-                forecastDay.temp.day
-              )}°C</span>
+              ${formatDay(forecastDay.dt)}<br /><img
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt=""
+          width="42"
+        /><br /><span id="daily-temp">${Math.round(
+          forecastDay.temp.day
+        )}°C</span>
             </div>
   `;
     }
@@ -86,9 +89,14 @@ function getForecast(coordinates) {
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city-name");
+  let iconElement = document.querySelector("#icon");
   temperatureElement.innerHTML = `${Math.round(response.data.main.temp)}° C`;
   cityElement.innerHTML = response.data.name;
-
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
   getForecast(response.data.coord);
 }
 
@@ -108,5 +116,3 @@ search("Montreal");
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
-
-// icons are not working as the OpenWeather icons weren't working and making the format of my forecast all crazy since it didn't align with the format I made in HTML/CSS.
