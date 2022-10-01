@@ -42,22 +42,34 @@ function formatTime(time) {
 let newTime = document.querySelector("#clock");
 newTime.innerHTML = `${formatTime(currentTime)}`;
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
-  let days = ["Thu", "Fri", "Sat", "Sun"];
-
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `
             <div class="col" id="weekday">
-              ${day}<br /><i class="fa-solid fa-cloud-sun" id="daily-icon"></i
-              ><br /><span id="daily-temp">20°C</span>
+              ${formatDay(
+                forecastDay.dt
+              )}<br /><i class="fa-solid fa-cloud-sun" id="daily-icon"></i
+              ><br /><span id="daily-temp">${Math.round(
+                forecastDay.temp.day
+              )}°C</span>
             </div>
   `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -96,3 +108,5 @@ search("Montreal");
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", handleSubmit);
+
+// icons are not working as the OpenWeather icons weren't working and making the format of my forecast all crazy since it didn't align with the format I made in HTML/CSS.
