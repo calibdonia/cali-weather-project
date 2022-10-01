@@ -42,11 +42,21 @@ function formatTime(time) {
 let newTime = document.querySelector("#clock");
 newTime.innerHTML = `${formatTime(currentTime)}`;
 
+function getForecast(coordinates) {
+  let apiKey = "c8735bb7e8e2f8d8a38c7501f3cd47d3";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let forecastElement = document.querySelector("#forecast");
+  console.log(apiUrl);
+  axios.get(apiUrl).then(forecastElement);
+}
+
 function displayTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityElement = document.querySelector("#city-name");
   temperatureElement.innerHTML = `${Math.round(response.data.main.temp)}° C`;
   cityElement.innerHTML = response.data.name;
+
+  getForecast(response.data.coord);
 }
 
 function search(city) {
