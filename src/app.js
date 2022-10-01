@@ -54,24 +54,8 @@ function displayForecast(response) {
       forecastHTML +
       `
             <div class="col" id="weekday">
-              SUN<br /><i class="fa-solid fa-cloud-sun" id="daily-icon"></i
+              ${day}<br /><i class="fa-solid fa-cloud-sun" id="daily-icon"></i
               ><br /><span id="daily-temp">20°C</span>
-            </div>
-            <div class="col" id="weekday">
-              MON<br /><i class="fa-solid fa-cloud-rain" id="daily-icon"></i
-              ><br /><span id="daily-temp">24°C</span>
-            </div>
-            <div class="col" id="weekday">
-              TUES<br /><i class="fa-solid fa-sun" id="daily-icon"></i
-              ><br /><span id="daily-temp">19°C</span>
-            </div>
-            <div class="col" id="weekday">
-              WED<br /><i class="fa-solid fa-cloud-sun" id="daily-icon"></i
-              ><br /><span id="daily-temp">22°C</span>
-            </div>
-            <div class="col" id="weekday">
-              THURS<br /><i class="fa-solid fa-sun" id="daily-icon"></i
-              ><br /><span id="daily-temp">23°C</span>
             </div>
   `;
   });
